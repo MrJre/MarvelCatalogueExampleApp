@@ -13,9 +13,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let characterListViewController = storyboard.instantiateInitialViewController() as? CharacterListViewController else {
+            fatalError()
+        }
+
+        let characterGateway = CharacterWebGateway(httpService: HttpService(session: URLSession.shared))
+        let characterUseCase = ShowCharacterListUseCase(gateway: characterGateway)
+        let characterPresenter = CharacterListPresenter(useCase: characterUseCase)
+
+        characterPresenter.view = characterListViewController
+        characterUseCase.presenter = characterPresenter
+        characterListViewController.presenter = characterPresenter
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = characterListViewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
