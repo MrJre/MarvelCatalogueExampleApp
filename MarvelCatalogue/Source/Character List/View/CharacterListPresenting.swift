@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CharacterListPresenting : class {
-    func refreshData() -> Void
+    func refreshData()
 }

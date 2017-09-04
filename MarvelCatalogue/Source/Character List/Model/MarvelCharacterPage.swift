@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct MarvelCharacterPage : Codable {
-  
+struct MarvelCharacterPage: Codable {
+
     let offset: Int
-    let limit : Int
-    let total : Int
-    let count : Int
-    let characters : [MarvelCharacter]
-    
-    enum CodingKeys : String, CodingKey {
+    let limit: Int
+    let total: Int
+    let count: Int
+    let characters: [MarvelCharacter]
+
+    enum CodingKeys: String, CodingKey {
         case characters = "results"
         case offset
         case limit

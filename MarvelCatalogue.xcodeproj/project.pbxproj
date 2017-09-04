@@ -159,8 +159,8 @@
 		0525F9F51F4B42CF00BCB517 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				058C91E71F5893F700FD7E2F /* Character List */,
 				0525F9C71F4B41FE00BCB517 /* AppDelegate.swift */,
+				058C91E71F5893F700FD7E2F /* Character List */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -189,8 +189,8 @@
 		058C91E51F5893B600FD7E2F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				05724E031F57266A006F778F /* CharacterListPresenter.swift */,
 				058C91E21F58929C00FD7E2F /* CharacterListPresentationType.swift */,
+				05724E031F57266A006F778F /* CharacterListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -198,11 +198,11 @@
 		058C91E61F5893CD00FD7E2F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05724E0D1F574084006F778F /* CharacterListPresenting.swift */,
+				05724E091F572E3D006F778F /* CharacterPresenting.swift */,
 				0525F9CB1F4B41FE00BCB517 /* Main.storyboard */,
 				0525F9C91F4B41FE00BCB517 /* CharacterListViewController.swift */,
-				05724E091F572E3D006F778F /* CharacterPresenting.swift */,
 				05724E0B1F572E6F006F778F /* CharacterTableViewCell.swift */,
-				05724E0D1F574084006F778F /* CharacterListPresenting.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,6 +229,7 @@
 				0525F9C01F4B41FE00BCB517 /* Sources */,
 				0525F9C11F4B41FE00BCB517 /* Frameworks */,
 				0525F9C21F4B41FE00BCB517 /* Resources */,
+				05A0ED841F5DAC80000A9298 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -344,6 +345,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05A0ED841F5DAC80000A9298 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0525F9C01F4B41FE00BCB517 /* Sources */ = {

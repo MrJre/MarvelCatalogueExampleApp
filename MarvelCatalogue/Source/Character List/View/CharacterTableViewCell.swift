@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterTableViewCell : UITableViewCell {
+class CharacterTableViewCell: UITableViewCell {
 
 }
 

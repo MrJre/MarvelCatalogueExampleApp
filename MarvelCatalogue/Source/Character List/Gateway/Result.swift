@@ -11,7 +11,7 @@ import Foundation
 enum Result<Value> {
     case success(Value)
     case failure(Error)
-    
+
     public var isSuccess: Bool {
         switch self {
         case .success:
@@ -20,11 +20,11 @@ enum Result<Value> {
             return false
         }
     }
-    
+
     public var isFailure: Bool {
         return !isSuccess
     }
-    
+
     public var value: Value? {
         switch self {
         case .success(let value):
@@ -33,7 +33,7 @@ enum Result<Value> {
             return nil
         }
     }
-    
+
     public var error: Error? {
         switch self {
         case .success:

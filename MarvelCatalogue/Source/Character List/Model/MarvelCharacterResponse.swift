@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct MarvelCharacterResponse : Codable {
+struct MarvelCharacterResponse: Codable {
     var data: MarvelCharacterPage
 }
