@@ -13,23 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navigationController: UINavigationController!
-    var characterUseCase: ShowCharacterListUseCase!
+    var characterListCoordinator: CharacterListCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let characterListViewController = storyboard.instantiateInitialViewController() as? CharacterListViewController else { fatalError() }
-
-        navigationController = UINavigationController(rootViewController: characterListViewController)
- 
-        let characterGateway = CharacterWebGateway(httpService: HttpService(session: URLSession.shared))
-        characterUseCase = ShowCharacterListUseCase(gateway: characterGateway)
-        let characterPresenter = CharacterListPresenter(useCase: characterUseCase)
-
-        characterPresenter.view = characterListViewController
-        characterUseCase.presenter = characterPresenter
-        characterListViewController.presenter = characterPresenter
+        navigationController = UINavigationController()
+        characterListCoordinator = CharacterListCoordinator(root: navigationController)
+        characterListCoordinator.start()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
