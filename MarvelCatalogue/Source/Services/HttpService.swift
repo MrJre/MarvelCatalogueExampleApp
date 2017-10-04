@@ -16,7 +16,7 @@ class HttpService {
         self.session = session
     }
 
-    func get(url: URL, parameters: [String:String], completion: @escaping (Result<Data>) -> Void) {
+    func get(url: URL, parameters: [String:String]? = nil, completion: @escaping (Result<Data>) -> Void) {
 
         guard let finalUrl = construct(url: url, fromParameters: parameters) else {
             completion(.failure(URLError(.badURL)))
@@ -37,7 +37,8 @@ class HttpService {
         task.resume()
     }
 
-    private func construct(url: URL, fromParameters parameters: [String:String]) -> URL? {
+    private func construct(url: URL, fromParameters parameters: [String:String]?) -> URL? {
+        guard let parameters = parameters else { return url }
 
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
 
