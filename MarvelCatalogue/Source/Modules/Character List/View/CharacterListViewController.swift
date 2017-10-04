@@ -32,8 +32,8 @@ extension CharacterListViewController: CharacterListPresenting {
         tableView.reloadData()
     }
 
-    func updateData(at: Int) {
-        tableView.reloadRows(at: [IndexPath(row: at, section: 0)], with: .none)
+    func updateData(at index: Int) {
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
     }
 }
 

@@ -10,5 +10,5 @@ import Foundation
 
 protocol CharacterListPresenting : class {
     func refreshData()
-    func updateData(at: Int)
+    func updateData(at index: Int)
 }
