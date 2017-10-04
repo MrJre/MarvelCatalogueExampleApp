@@ -12,7 +12,7 @@ struct CharacterDisplayData {
 
     let name: String
     let description: String
-    var thumbnail: NSData?
+    var thumbnail: Data?
 
     init(character: MarvelCharacter) {
         self.name = character.name
