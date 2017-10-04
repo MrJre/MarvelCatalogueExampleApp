@@ -30,6 +30,7 @@ class CharacterListPresenter {
     func configure(view: CharacterCellPresenting, at index: Int) {
         let character = characters[index]
         view.display(name: character.name)
+        view.display(thumbnail: character.thumbnail)
     }
 }
 

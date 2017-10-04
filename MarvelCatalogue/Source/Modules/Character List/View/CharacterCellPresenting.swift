@@ -10,4 +10,5 @@ import Foundation
 
 protocol CharacterCellPresenting {
     func display(name: String)
+    func display(thumbnail: Data?)
 }
