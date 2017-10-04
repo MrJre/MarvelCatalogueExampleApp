@@ -89,6 +89,7 @@
 		05724E091F572E3D006F778F /* CharacterCellPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellPresenting.swift; sourceTree = "<group>"; };
 		05724E0B1F572E6F006F778F /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		05724E0D1F574084006F778F /* CharacterListPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenting.swift; sourceTree = "<group>"; };
+		058341001F8518810050767C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		058C91E21F58929C00FD7E2F /* CharacterListPresentationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresentationType.swift; sourceTree = "<group>"; };
 		0590B1B91F827CB800808E54 /* CharacterImageWebGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageWebGateway.swift; sourceTree = "<group>"; };
 		0590B1BB1F827FC800808E54 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 				0525F9D01F4B41FE00BCB517 /* LaunchScreen.storyboard */,
 				0525F9D31F4B41FE00BCB517 /* Info.plist */,
 				0525F9FF1F4B565200BCB517 /* MarvelCatalogue-Bridging-Header.h */,
+				058341001F8518810050767C /* README.md */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
