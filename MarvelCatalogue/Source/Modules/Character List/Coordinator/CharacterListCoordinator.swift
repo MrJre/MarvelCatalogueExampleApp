@@ -21,8 +21,11 @@ class CharacterListCoordinator: Coordinating {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let characterListViewController = storyboard.instantiateInitialViewController() as? CharacterListViewController else { fatalError() }
 
-        let characterGateway = CharacterWebGateway(httpService: HttpService(session: URLSession.shared))
-        let characterUseCase = ShowCharacterListUseCase(gateway: characterGateway)
+        let httpService = HttpService(session: URLSession.shared)
+        let characterGateway = CharacterWebGateway(httpService: httpService)
+        let characterImageGateway = CharacterImageWebGateway(httpService: httpService)
+
+        let characterUseCase = ShowCharacterListUseCase(characterGateway: characterGateway, imageGateway: characterImageGateway)
         let characterPresenter = CharacterListPresenter(useCase: characterUseCase)
 
         characterPresenter.view = characterListViewController

@@ -31,6 +31,10 @@ class CharacterListPresenter {
         let character = characters[index]
         view.display(name: character.name)
         view.display(thumbnail: character.thumbnail)
+
+        if character.thumbnail == nil {
+            useCase.getThumbnailForCharacter(at: index)
+        }
     }
 }
 
@@ -39,6 +43,12 @@ extension CharacterListPresenter : CharacterListPresentationType {
     func present(characters: [CharacterDisplayData]) {
         self.characters = characters
         view?.refreshData()
+    }
+
+    func update(character: CharacterDisplayData) {
+        guard let index = characters.index(where: { $0.name == character.name }) else { return }
+        characters[index] = character
+        view?.updateData(at: index)
     }
 
     func present(error: Error) {
