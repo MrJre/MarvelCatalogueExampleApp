@@ -38,7 +38,9 @@ extension CharacterListViewController: CharacterListPresenting {
 }
 
 extension CharacterListViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showCharacterDetail(for: indexPath.row)
+    }
 }
 
 extension CharacterListViewController: UITableViewDataSource {

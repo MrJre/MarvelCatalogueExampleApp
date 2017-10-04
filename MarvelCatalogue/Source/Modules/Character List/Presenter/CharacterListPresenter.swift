@@ -37,6 +37,10 @@ class CharacterListPresenter {
             useCase.getThumbnailForCharacter(at: index)
         }
     }
+
+    func showCharacterDetail(for index: Int) {
+        coordinator?.show(characterAt: index)
+    }
 }
 
 extension CharacterListPresenter : CharacterListPresentationType {
