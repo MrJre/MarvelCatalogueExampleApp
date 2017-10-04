@@ -15,15 +15,19 @@ protocol CharacterGatewayType {
 class CharacterWebGateway: CharacterGatewayType {
 
     private let httpService: HttpService
+    private let authentication: Authentication
 
-    init(httpService: HttpService) {
+    init(httpService: HttpService, authentication: Authentication) {
         self.httpService = httpService
+        self.authentication = authentication
     }
 
     func loadCharacters(completion: @escaping (Result<[MarvelCharacter]>) -> Void) {
         let urlString = "https://gateway.marvel.com/v1/public/characters"
-        let publicKey = "***REMOVED***"
-        let privateKey = "***REMOVED***"
+
+        let privateKey = authentication.privateKey
+        let publicKey = authentication.publicKey
+
         let ts = String(Date().timeIntervalSince1970)
         let hash = "\(ts)\(privateKey)\(publicKey)".MD5()
 

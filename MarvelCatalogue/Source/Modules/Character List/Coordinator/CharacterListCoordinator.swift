@@ -20,9 +20,10 @@ class CharacterListCoordinator: Coordinating {
     func createViewController() -> CharacterListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let characterListViewController = storyboard.instantiateInitialViewController() as? CharacterListViewController else { fatalError() }
+        guard let authentication = loadAuthentication() else { fatalError() }
 
         let httpService = HttpService(session: URLSession.shared)
-        let characterGateway = CharacterWebGateway(httpService: httpService)
+        let characterGateway = CharacterWebGateway(httpService: httpService, authentication: authentication)
         let characterImageGateway = CharacterImageWebGateway(httpService: httpService)
 
         let characterUseCase = ShowCharacterListUseCase(characterGateway: characterGateway, imageGateway: characterImageGateway)
@@ -33,5 +34,16 @@ class CharacterListCoordinator: Coordinating {
         characterListViewController.presenter = characterPresenter
 
         return characterListViewController
+    }
+
+    private func loadAuthentication() -> Authentication? {
+        guard let credentialsUrl = Bundle.main.url(forResource: "MarvelCredentials", withExtension: "plist") else { return nil }
+        do {
+            let credentialsData = try Data(contentsOf: credentialsUrl)
+            return try PropertyListDecoder().decode(Authentication.self, from: credentialsData)
+        } catch {
+            print(error)
+            return nil
+        }
     }
 }
