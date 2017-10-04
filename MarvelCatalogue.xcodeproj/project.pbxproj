@@ -185,7 +185,7 @@
 		0525F9F51F4B42CF00BCB517 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0590B1C01F82885300808E54 /* Services */,
+				058341041F851AE60050767C /* Shared */,
 				0590B1BF1F82882D00808E54 /* Modules */,
 				0525F9C71F4B41FE00BCB517 /* AppDelegate.swift */,
 			);
@@ -207,7 +207,6 @@
 		054E7BE71F60737A006098A1 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				05A0ED821F5DAB73000A9298 /* Coordinating.swift */,
 				05A0ED851F5DB684000A9298 /* CharacterListCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -224,22 +223,70 @@
 		054E7BE91F617DD1006098A1 /* Character Detail */ = {
 			isa = PBXGroup;
 			children = (
-				051C78641F617EDF0032B8B8 /* CharacterDetailViewController.swift */,
-				054E7BEA1F617DFC006098A1 /* CharacterDetail.storyboard */,
-				051C78661F6182860032B8B8 /* CharacterPresenter.swift */,
-				051C78681F6182B30032B8B8 /* CharacterPresentationType.swift */,
-				051C786A1F6184040032B8B8 /* CharacterDetailPresenting.swift */,
-				051C786C1F61CB540032B8B8 /* ShowCharacterDetailUseCase.swift */,
+				058341011F851AB10050767C /* View */,
+				058341021F851AC00050767C /* Presenter */,
+				058341031F851ACA0050767C /* Use Case */,
 			);
 			path = "Character Detail";
+			sourceTree = "<group>";
+		};
+		058341011F851AB10050767C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				051C78641F617EDF0032B8B8 /* CharacterDetailViewController.swift */,
+				054E7BEA1F617DFC006098A1 /* CharacterDetail.storyboard */,
+				051C786A1F6184040032B8B8 /* CharacterDetailPresenting.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		058341021F851AC00050767C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				051C78661F6182860032B8B8 /* CharacterPresenter.swift */,
+				051C78681F6182B30032B8B8 /* CharacterPresentationType.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		058341031F851ACA0050767C /* Use Case */ = {
+			isa = PBXGroup;
+			children = (
+				051C786C1F61CB540032B8B8 /* ShowCharacterDetailUseCase.swift */,
+			);
+			path = "Use Case";
+			sourceTree = "<group>";
+		};
+		058341041F851AE60050767C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0525F9F91F4B483700BCB517 /* Result.swift */,
+				058341051F851B040050767C /* Coordinator */,
+				0590B1C01F82885300808E54 /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		058341051F851B040050767C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				05A0ED821F5DAB73000A9298 /* Coordinating.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		058341061F851B330050767C /* Gateways */ = {
+			isa = PBXGroup;
+			children = (
+				0590B1B91F827CB800808E54 /* CharacterImageWebGateway.swift */,
+			);
+			path = Gateways;
 			sourceTree = "<group>";
 		};
 		058C91E41F58938F00FD7E2F /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
-				0525F9F91F4B483700BCB517 /* Result.swift */,
 				0525F9FB1F4B4A5B00BCB517 /* CharacterWebGateway.swift */,
-				0590B1B91F827CB800808E54 /* CharacterImageWebGateway.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -292,6 +339,7 @@
 			children = (
 				0525F9F71F4B443A00BCB517 /* HttpService.swift */,
 				0590B1BB1F827FC800808E54 /* String+MD5.swift */,
+				058341061F851B330050767C /* Gateways */,
 				050A38101F5092F0009CF157 /* Model */,
 			);
 			path = Services;
