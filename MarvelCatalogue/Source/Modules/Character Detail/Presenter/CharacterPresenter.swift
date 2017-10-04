@@ -15,6 +15,10 @@ class CharacterPresenter {
     init(useCase: ShowCharacterDetailUseCase) {
         self.useCase = useCase
     }
+
+    func getImage() {
+        useCase.getImage()
+    }
 }
 
 extension CharacterPresenter: CharacterPresentationType {

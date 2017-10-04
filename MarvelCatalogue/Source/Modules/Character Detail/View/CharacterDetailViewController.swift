@@ -16,7 +16,7 @@ class CharacterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        characterPresenter.getImage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +30,6 @@ extension CharacterDetailViewController: CharacterDetailPresenting {
         characterImageView.image = UIImage(data: imageData)
     }
 
-    func display(error: Error) {
-        
+    func display(error: Error) {        
     }
 }
