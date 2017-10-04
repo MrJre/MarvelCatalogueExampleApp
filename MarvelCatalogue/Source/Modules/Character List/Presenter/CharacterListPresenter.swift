@@ -12,6 +12,7 @@ class CharacterListPresenter {
 
     let useCase: ShowCharacterListUseCase
     weak var view: CharacterListPresenting?
+    weak var coordinator: CharacterListCoordinationType?
 
     private var characters = [CharacterDisplayData]()
 

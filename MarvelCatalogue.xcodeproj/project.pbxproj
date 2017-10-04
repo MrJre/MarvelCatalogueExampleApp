@@ -41,6 +41,7 @@
 		05A5094E1F828E4500F83E54 /* CharacterDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A5094D1F828E4500F83E54 /* CharacterDisplayData.swift */; };
 		05E900E51F852C7200CADDAC /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E900E41F852C7200CADDAC /* Authentication.swift */; };
 		05E900E71F85569C00CADDAC /* CharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E900E61F85569C00CADDAC /* CharacterDetailCoordinator.swift */; };
+		05E900E91F855B1700CADDAC /* CharacterListCoordinationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E900E81F855B1700CADDAC /* CharacterListCoordinationType.swift */; };
 		05E900EB1F855FA300CADDAC /* ImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E900EA1F855FA300CADDAC /* ImageType.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 				0525FA001F4B628300BCB517 /* MarvelCharacterResponse.swift */,
 				0590B1BD1F82862500808E54 /* MarvelImage.swift */,
 				05E900E41F852C7200CADDAC /* Authentication.swift */,
+				05E900EA1F855FA300CADDAC /* ImageType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +240,7 @@
 				058341011F851AB10050767C /* View */,
 				058341021F851AC00050767C /* Presenter */,
 				058341031F851ACA0050767C /* Use Case */,
+				05E900E61F85569C00CADDAC /* CharacterDetailCoordinator.swift */,
 			);
 			path = "Character Detail";
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 			files = (
 				05724E0A1F572E3D006F778F /* CharacterCellPresenting.swift in Sources */,
 				05724E0C1F572E6F006F778F /* CharacterTableViewCell.swift in Sources */,
+				05E900E91F855B1700CADDAC /* CharacterListCoordinationType.swift in Sources */,
 				05A0ED831F5DAB73000A9298 /* Coordinating.swift in Sources */,
 				05724E0E1F574084006F778F /* CharacterListPresenting.swift in Sources */,
 				0525FA011F4B628300BCB517 /* MarvelCharacterResponse.swift in Sources */,

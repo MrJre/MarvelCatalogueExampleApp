@@ -11,6 +11,7 @@ import UIKit
 class CharacterListCoordinator: Coordinating {
 
     var viewController: CharacterListViewController?
+    var useCase: ShowCharacterListUseCase?
     let root: UIViewController
 
     init(root: UIViewController) {
@@ -26,11 +27,12 @@ class CharacterListCoordinator: Coordinating {
         let characterGateway = CharacterWebGateway(httpService: httpService, authentication: authentication)
         let characterImageGateway = CharacterImageWebGateway(httpService: httpService)
 
-        let characterUseCase = ShowCharacterListUseCase(characterGateway: characterGateway, imageGateway: characterImageGateway)
-        let characterPresenter = CharacterListPresenter(useCase: characterUseCase)
+        useCase = ShowCharacterListUseCase(characterGateway: characterGateway, imageGateway: characterImageGateway)
+        let characterPresenter = CharacterListPresenter(useCase: useCase!)
 
+        characterPresenter.coordinator = self
         characterPresenter.view = characterListViewController
-        characterUseCase.presenter = characterPresenter
+        useCase?.presenter = characterPresenter
         characterListViewController.presenter = characterPresenter
 
         return characterListViewController
@@ -45,5 +47,15 @@ class CharacterListCoordinator: Coordinating {
             print(error)
             return nil
         }
+    }
+}
+
+extension CharacterListCoordinator: CharacterListCoordinationType {
+    func show(characterAt index: Int) {
+        guard let viewController = viewController else { return }
+        guard let character = useCase?.characters?[index] else { return }
+
+        let characterDetailCoordinator = CharacterDetailCoordinator(root: viewController, character: character)
+        characterDetailCoordinator.start()
     }
 }

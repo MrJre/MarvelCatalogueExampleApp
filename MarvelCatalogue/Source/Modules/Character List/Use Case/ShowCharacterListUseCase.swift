@@ -14,7 +14,7 @@ class ShowCharacterListUseCase {
     let characterGateway: CharacterGatewayType
     let imageGateway: CharacterImageGatewayType
 
-    private var characters: [MarvelCharacter]?
+    var characters: [MarvelCharacter]?
 
     init(characterGateway: CharacterGatewayType, imageGateway: CharacterImageGatewayType) {
         self.characterGateway = characterGateway
