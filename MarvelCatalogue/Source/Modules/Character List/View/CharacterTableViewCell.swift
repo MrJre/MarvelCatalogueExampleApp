@@ -12,7 +12,7 @@ class CharacterTableViewCell: UITableViewCell {
 
 }
 
-extension CharacterTableViewCell : CharacterPresenting {
+extension CharacterTableViewCell : CharacterCellPresenting {
     func display(name: String) {
         textLabel?.text = name
     }

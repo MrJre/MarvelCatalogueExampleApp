@@ -11,4 +11,5 @@ import Foundation
 struct MarvelCharacter: Codable {
     let name: String
     let description: String
+    let thumbnail: MarvelImage
 }

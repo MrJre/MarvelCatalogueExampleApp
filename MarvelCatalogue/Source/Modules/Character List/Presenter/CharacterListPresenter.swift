@@ -13,7 +13,7 @@ class CharacterListPresenter {
     let useCase: ShowCharacterListUseCase
     weak var view: CharacterListPresenting?
 
-    private var characters = [MarvelCharacter]()
+    private var characters = [CharacterDisplayData]()
 
     init(useCase: ShowCharacterListUseCase) {
         self.useCase = useCase
@@ -27,7 +27,7 @@ class CharacterListPresenter {
         return characters.count
     }
 
-    func configure(view: CharacterPresenting, at index: Int) {
+    func configure(view: CharacterCellPresenting, at index: Int) {
         let character = characters[index]
         view.display(name: character.name)
     }
@@ -35,7 +35,7 @@ class CharacterListPresenter {
 
 extension CharacterListPresenter : CharacterListPresentationType {
 
-    func present(characters: [MarvelCharacter]) {
+    func present(characters: [CharacterDisplayData]) {
         self.characters = characters
         view?.refreshData()
     }

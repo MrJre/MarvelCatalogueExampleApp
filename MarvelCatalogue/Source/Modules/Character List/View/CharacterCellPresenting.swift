@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol CharacterPresenting {
+protocol CharacterCellPresenting {
     func display(name: String)
 }

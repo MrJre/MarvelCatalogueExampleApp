@@ -9,6 +9,6 @@
 import Foundation
 
 protocol CharacterListPresentationType: class {
-    func present(characters: [MarvelCharacter])
+    func present(characters: [CharacterDisplayData])
     func present(error: Error)
 }

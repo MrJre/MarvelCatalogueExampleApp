@@ -18,12 +18,19 @@ class ShowCharacterListUseCase {
     }
 
     func getCharacters() {
-        gateway.getCharacters { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let characters):
-                    self.presenter?.present(characters: characters)
-                case .failure(let error):
+        gateway.loadCharacters { result in
+
+            switch result {
+            case .success(let characters):
+                let characterDisplayData = characters.map({ (character) -> CharacterDisplayData in
+                    CharacterDisplayData(character: character)
+                })
+
+                DispatchQueue.main.async {
+                    self.presenter?.present(characters: characterDisplayData)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
                     self.presenter?.present(error: error)
                 }
             }

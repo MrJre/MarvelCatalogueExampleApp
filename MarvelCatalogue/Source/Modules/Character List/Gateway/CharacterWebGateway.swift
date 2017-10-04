@@ -9,23 +9,23 @@
 import Foundation
 
 protocol CharacterGatewayType {
-    func getCharacters(completion: @escaping (Result<[MarvelCharacter]>) -> Void)
+    func loadCharacters(completion: @escaping (Result<[MarvelCharacter]>) -> Void)
 }
 
 class CharacterWebGateway: CharacterGatewayType {
 
-    let httpService: HttpService
+    private let httpService: HttpService
 
     init(httpService: HttpService) {
         self.httpService = httpService
     }
 
-    func getCharacters(completion: @escaping (Result<[MarvelCharacter]>) -> Void) {
+    func loadCharacters(completion: @escaping (Result<[MarvelCharacter]>) -> Void) {
         let urlString = "https://gateway.marvel.com/v1/public/characters"
         let publicKey = "***REMOVED***"
         let privateKey = "***REMOVED***"
         let ts = String(Date().timeIntervalSince1970)
-        let hash = MD5(string: "\(ts)\(privateKey)\(publicKey)")
+        let hash = "\(ts)\(privateKey)\(publicKey)".MD5()
 
         let url = URL(string: urlString)!
 
@@ -44,18 +44,5 @@ class CharacterWebGateway: CharacterGatewayType {
                 print(error)
             }
         }
-    }
-
-    func MD5(string: String) -> String {
-        let messageData = string.data(using:.utf8)!
-        var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
-
-        _ = digestData.withUnsafeMutableBytes {digestBytes in
-            messageData.withUnsafeBytes {messageBytes in
-                CC_MD5(messageBytes, CC_LONG(messageData.count), digestBytes)
-            }
-        }
-
-        return digestData.map { String(format: "%02hhx", $0) }.joined()
     }
 }
