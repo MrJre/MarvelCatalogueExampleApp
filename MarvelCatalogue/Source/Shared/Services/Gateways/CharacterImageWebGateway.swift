@@ -9,33 +9,32 @@
 import Foundation
 
 protocol CharacterImageGatewayType {
-    func loadCharacterImage(for character: MarvelCharacter, completion: @escaping (Result<Data>) -> Void)
+    func load(image: MarvelImage, type: ImageType, completion: @escaping (Result<Data>) -> Void)
 }
 
 class CharacterImageWebGateway: CharacterImageGatewayType {
 
     private let httpService: HttpService
-    private var charactersDownloading: Set<MarvelCharacter> = []
+    private var imagesDownloading: Set<String> = []
 
     init(httpService: HttpService) {
         self.httpService = httpService
     }
 
-    func loadCharacterImage(for character: MarvelCharacter, completion: @escaping (Result<Data>) -> Void) {
-        guard !charactersDownloading.contains(character) else { return }
-        charactersDownloading.insert(character)
+    func load(image: MarvelImage, type: ImageType, completion: @escaping (Result<Data>) -> Void) {
+        guard !imagesDownloading.contains(image.path.lastPathComponent) else { return }
+        imagesDownloading.insert(image.path.lastPathComponent)
 
-        let thumbnail = character.thumbnail
-
-        var components = URLComponents(url: thumbnail.path, resolvingAgainstBaseURL: false)
+        var components = URLComponents(url: image.path, resolvingAgainstBaseURL: false)
         components?.scheme = "https"
 
         var url = components?.url
-        url?.appendPathComponent("standard_medium")
-        url?.appendPathExtension(thumbnail.fileExtension)
+        url?.appendPathComponent(type.rawValue)
+        url?.appendPathExtension(image.fileExtension)
 
         httpService.get(url: url!) { (result) in
-             completion(result)
+            completion(result)
+            self.imagesDownloading.remove(image.path.lastPathComponent)
         }
     }
 }
