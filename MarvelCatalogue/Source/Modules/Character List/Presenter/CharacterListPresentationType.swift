@@ -10,5 +10,8 @@ import Foundation
 
 protocol CharacterListPresentationType: class {
     func present(characters: [CharacterDisplayData])
+
+    func update(character: CharacterDisplayData)
+
     func present(error: Error)
 }
