@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func MD5() -> String {
-        let messageData = self.data(using:.utf8)!
+        let messageData = self.data(using: .utf8)!
         var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
 
         _ = digestData.withUnsafeMutableBytes { digestBytes in

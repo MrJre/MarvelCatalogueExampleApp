@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum HttpServiceError {
+    case decodingError
+}
+
 class HttpService {
 
     let session: URLSession
@@ -15,17 +19,15 @@ class HttpService {
     init(session: URLSession) {
         self.session = session
     }
-
-    func get(url: URL, parameters: [String:String]? = nil, completion: @escaping (Result<Data>) -> Void) {
-
+    
+    func get(url: URL, parameters: [String: String]? = nil, completion: @escaping (Result<Data, Error>) -> Void) {
+        
         guard let finalUrl = construct(url: url, fromParameters: parameters) else {
             completion(.failure(URLError(.badURL)))
             return
         }
-
-        print(finalUrl)
-
-        let task = session.dataTask(with: finalUrl) { (data, _, error) in
+        
+        let completion: (Data?, URLResponse?, Error?) -> Void = { (data, _, error) in
             if let data = data {
                 completion(.success(data))
             } else if let error = error {
@@ -34,10 +36,37 @@ class HttpService {
                 // TODO: Something bad happened.
             }
         }
-        task.resume()
+        
+        run(url: finalUrl, completionHandler: completion)
     }
 
-    private func construct(url: URL, fromParameters parameters: [String:String]?) -> URL? {
+    func getObject<T: Decodable>(url: URL, type: T.Type, parameters: [String: String]? = nil, completion: @escaping (Result<T, Error>) -> Void) {
+
+        guard let finalUrl = construct(url: url, fromParameters: parameters) else {
+            completion(.failure(URLError(.badURL)))
+            return
+        }
+
+        let completion: (Data?, URLResponse?, Error?) -> Void = { (data, _, error) in
+            if let data = data {
+                let decoder = JSONDecoder()
+                do {
+                    let response = try decoder.decode(T.self, from: data)
+                    completion(.success(response))
+                } catch let decodingError {
+                    completion(.failure(decodingError))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            } else {
+                // TODO: Something bad happened.
+            }
+        }
+        
+        run(url: finalUrl, completionHandler: completion)
+    }
+
+    private func construct(url: URL, fromParameters parameters: [String: String]?) -> URL? {
         guard let parameters = parameters else { return url }
 
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
@@ -49,5 +78,9 @@ class HttpService {
         }
 
         return urlComponents?.url
+    }
+    
+    private func run(url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+         session.dataTask(with: url, completionHandler: completionHandler).resume()
     }
 }

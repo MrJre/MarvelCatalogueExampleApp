@@ -30,6 +30,7 @@ extension CharacterDetailViewController: CharacterDetailPresenting {
         characterImageView.image = UIImage(data: imageData)
     }
 
-    func display(error: Error) {        
+    func display(error: Error) {
+        
     }
 }

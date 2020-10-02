@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CharacterListPresenting : class {
+protocol CharacterListPresenting: class {
     func refreshData()
     func updateData(at index: Int)
 }

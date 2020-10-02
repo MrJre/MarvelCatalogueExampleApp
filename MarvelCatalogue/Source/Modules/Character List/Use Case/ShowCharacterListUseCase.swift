@@ -49,7 +49,7 @@ class ShowCharacterListUseCase {
     }
 
     private func getThumbnail(for character: MarvelCharacter) {
-        imageGateway.load(image: character.thumbnail, type: .standard){ (result) in
+        imageGateway.load(image: character.thumbnail, type: .standard) { (result) in
             switch result {
             case .success(let imageData):
 

@@ -43,7 +43,7 @@ class CharacterListPresenter {
     }
 }
 
-extension CharacterListPresenter : CharacterListPresentationType {
+extension CharacterListPresenter: CharacterListPresentationType {
 
     func present(characters: [CharacterDisplayData]) {
         self.characters = characters
@@ -51,7 +51,7 @@ extension CharacterListPresenter : CharacterListPresentationType {
     }
 
     func update(character: CharacterDisplayData) {
-        guard let index = characters.index(where: { $0.name == character.name }) else { return }
+        guard let index = characters.firstIndex(where: { $0.name == character.name }) else { return }
         characters[index] = character
         view?.updateData(at: index)
     }

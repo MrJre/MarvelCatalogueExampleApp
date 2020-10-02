@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CharacterImageGatewayType {
-    func load(image: MarvelImage, type: ImageType, completion: @escaping (Result<Data>) -> Void)
+    func load(image: MarvelImage, type: ImageType, completion: @escaping (Result<Data, Error>) -> Void)
 }
 
 class CharacterImageWebGateway: CharacterImageGatewayType {
@@ -21,7 +21,7 @@ class CharacterImageWebGateway: CharacterImageGatewayType {
         self.httpService = httpService
     }
 
-    func load(image: MarvelImage, type: ImageType, completion: @escaping (Result<Data>) -> Void) {
+    func load(image: MarvelImage, type: ImageType, completion: @escaping (Result<Data, Error>) -> Void) {
         guard !imagesDownloading.contains(image.path.lastPathComponent) else { return }
         imagesDownloading.insert(image.path.lastPathComponent)
 
