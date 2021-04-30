@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CharacterDetailPresenting: class {
+protocol CharacterDetailPresenting: AnyObject {
     func display(imageData: Data)
     func display(error: Error)
 }

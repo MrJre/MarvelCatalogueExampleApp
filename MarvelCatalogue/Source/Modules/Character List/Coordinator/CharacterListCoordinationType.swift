@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol CharacterListCoordinationType: class {
+protocol CharacterListCoordinationType: AnyObject {
     func show(characterAt index: Int)
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CharacterPresentationType: class {
+protocol CharacterPresentationType: AnyObject {
     func present(imageData: Data)
     func present(error: Error)
 }

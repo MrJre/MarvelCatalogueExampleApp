@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Coordinating: class {
+protocol Coordinating: AnyObject {
     associatedtype ViewController: UIViewController
     var viewController: ViewController? { get set }
     var root: UIViewController { get }
