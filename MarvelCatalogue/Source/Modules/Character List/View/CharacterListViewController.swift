@@ -28,7 +28,8 @@ extension CharacterListViewController: CharacterListPresenting {
     }
 
     func updateData(at index: Int) {
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? CharacterCellPresenting else { return }
+        presenter.configure(view: cell, at: index)
     }
 }
 
