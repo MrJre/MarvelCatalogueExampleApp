@@ -25,7 +25,7 @@ class CharacterListPresenter {
     }
 
     func getCharacterCount() -> Int {
-        return characters.count
+        characters.count
     }
 
     func configure(view: CharacterCellPresenting, at index: Int) {

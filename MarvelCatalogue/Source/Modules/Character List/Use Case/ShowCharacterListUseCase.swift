@@ -28,9 +28,9 @@ class ShowCharacterListUseCase {
             case .success(let characters):
                 self.characters = characters
 
-                let characterDisplayData = characters.map({ (character) -> CharacterDisplayData in
-                    CharacterDisplayData(character: character)
-                })
+                let characterDisplayData = characters.map {
+                    CharacterDisplayData(character: $0)
+                }
 
                 DispatchQueue.main.async {
                     self.presenter?.present(characters: characterDisplayData)
@@ -49,7 +49,7 @@ class ShowCharacterListUseCase {
     }
 
     private func getThumbnail(for character: MarvelCharacter) {
-        imageGateway.load(image: character.thumbnail, type: .standard) { (result) in
+        imageGateway.load(image: character.thumbnail, type: .standard) { result in
             switch result {
             case .success(let imageData):
 

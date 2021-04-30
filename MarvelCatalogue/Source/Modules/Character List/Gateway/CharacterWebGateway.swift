@@ -33,7 +33,7 @@ class CharacterWebGateway: CharacterGatewayType {
 
         let url = URL(string: urlString)!
 
-        httpService.getObject(url: url, type: MarvelCharacterResponse.self, parameters: ["apikey": publicKey, "ts": timestamp, "hash": hash, "limit": "100"]) { (result) in
+        httpService.getObject(url: url, type: MarvelCharacterResponse.self, parameters: ["apikey": publicKey, "ts": timestamp, "hash": hash, "limit": "100"]) { result in
             switch result {
             case .success(let response):
                 completion(.success(response.data.characters))

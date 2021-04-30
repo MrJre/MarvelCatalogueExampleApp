@@ -15,7 +15,7 @@ struct CharacterDisplayData {
     var thumbnail: Data?
 
     init(character: MarvelCharacter) {
-        self.name = character.name
-        self.description = character.description
+        name = character.name
+        description = character.description
     }
 }

@@ -18,11 +18,6 @@ class CharacterDetailViewController: UIViewController {
 
         characterPresenter.getImage()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
 extension CharacterDetailViewController: CharacterDetailPresenting {

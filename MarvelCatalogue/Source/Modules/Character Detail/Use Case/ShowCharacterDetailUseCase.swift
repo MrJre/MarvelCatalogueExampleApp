@@ -20,7 +20,7 @@ class ShowCharacterDetailUseCase {
     }
 
     func getImage() {
-        imageGateway.load(image: character.thumbnail, type: .portrait) { (result) in
+        imageGateway.load(image: character.thumbnail, type: .portrait) { result in
 
             switch result {
             case .success(let data):

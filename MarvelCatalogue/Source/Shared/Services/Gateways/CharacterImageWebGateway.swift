@@ -32,7 +32,7 @@ class CharacterImageWebGateway: CharacterImageGatewayType {
         url?.appendPathComponent(type.rawValue)
         url?.appendPathExtension(image.fileExtension)
 
-        httpService.get(url: url!) { (result) in
+        httpService.get(url: url!) { result in
             completion(result)
             self.imagesDownloading.remove(image.path.lastPathComponent)
         }
