@@ -14,7 +14,7 @@ class ShowCharacterListUseCase {
     let characterGateway: CharacterGatewayType
     let imageGateway: CharacterImageGatewayType
 
-    var characters: [MarvelCharacter]?
+    var characters: [MarvelCharacter] = []
 
     init(characterGateway: CharacterGatewayType, imageGateway: CharacterImageGatewayType) {
         self.characterGateway = characterGateway
@@ -22,13 +22,13 @@ class ShowCharacterListUseCase {
     }
 
     func getCharacters() {
-        characterGateway.loadCharacters { result in
+        characterGateway.loadCharacters(offset: characters.count) { result in
 
             switch result {
             case .success(let characters):
-                self.characters = characters
+                self.characters.append(contentsOf: characters)
 
-                let characterDisplayData = characters.map {
+                    let characterDisplayData = self.characters.map {
                     CharacterDisplayData(character: $0)
                 }
 
@@ -44,8 +44,7 @@ class ShowCharacterListUseCase {
     }
 
     func getThumbnailForCharacter(at index: Int) {
-        guard let character = characters?[index] else { return }
-        getThumbnail(for: character)
+        getThumbnail(for: characters[index])
     }
 
     private func getThumbnail(for character: MarvelCharacter) {

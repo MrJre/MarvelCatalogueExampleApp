@@ -54,3 +54,13 @@ extension CharacterListViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension CharacterListViewController: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard presenter.getCharacterCount() > 0 else { return }
+        
+        if scrollView.contentOffset.y + view.bounds.height > scrollView.contentSize.height - (view.bounds.height / 2) {
+            presenter.getCharacters()
+        }
+    }
+}

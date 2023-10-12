@@ -12,6 +12,11 @@ struct Authentication: Codable {
     let privateKey: String
     let publicKey: String
 
+    init(privateKey: String, publicKey: String) {
+        self.privateKey = privateKey
+        self.publicKey = publicKey
+    }
+
     enum CodingKeys: String, CodingKey {
         case privateKey = "Private"
         case publicKey = "Public"

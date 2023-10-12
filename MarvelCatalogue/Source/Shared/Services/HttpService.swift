@@ -20,6 +20,8 @@ class HttpService {
         self.session = session
     }
     
+    var requestStorage: [MarvelAPIRequest] = []
+    
     func get(url: URL, parameters: [String: String]? = nil, completion: @escaping (Result<Data, Error>) -> Void) {
         
         guard let finalUrl = construct(url: url, fromParameters: parameters) else {
@@ -40,9 +42,11 @@ class HttpService {
         run(url: finalUrl, completionHandler: completion)
     }
 
-    func getObject<T: Decodable>(url: URL, type: T.Type, parameters: [String: String]? = nil, completion: @escaping (Result<T, Error>) -> Void) {
+    func getObject<T: Decodable>(request: MarvelAPIRequest, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
 
-        guard let finalUrl = construct(url: url, fromParameters: parameters) else {
+        guard !requestStorage.contains(request) else { return }
+        
+        guard let finalUrl = construct(url: request.url, fromParameters: request.parameters) else {
             completion(.failure(URLError(.badURL)))
             return
         }
@@ -61,8 +65,10 @@ class HttpService {
             } else {
                 // TODO: Something bad happened.
             }
+            self.requestStorage.removeAll { $0 == request }
         }
         
+        requestStorage.append(request)
         run(url: finalUrl, completionHandler: completion)
     }
 

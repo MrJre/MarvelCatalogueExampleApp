@@ -1,6 +1,6 @@
 //
-//  MarvelCatalogueTests.swift
-//  MarvelCatalogueTests
+//  ShowCharacterListUseCase.swift
+//  ShowCharacterListUseCase
 //
 //  Created by Jerry Tromp on 21/08/2017.
 //  Copyright © 2017 Jerry Tromp. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import MarvelCatalogue
 
-class MarvelCatalogueTests: XCTestCase {
+class ShowCharacterListUseCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -26,10 +26,4 @@ class MarvelCatalogueTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 }
