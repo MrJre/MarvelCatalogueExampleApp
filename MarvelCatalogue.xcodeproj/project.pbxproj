@@ -107,6 +107,7 @@
 		05E900E61F85569C00CADDAC /* CharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCoordinator.swift; sourceTree = "<group>"; };
 		05E900E81F855B1700CADDAC /* CharacterListCoordinationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListCoordinationType.swift; sourceTree = "<group>"; };
 		05E900EA1F855FA300CADDAC /* ImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageType.swift; sourceTree = "<group>"; };
+		3BBCDBB12ADD7C67007EAB65 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		3BD248802ADD6A0C00B5879B /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		3BED770C2AD7F0980029370C /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		4B478F84A93925C61CEC5A67 /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -377,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				3BD248802ADD6A0C00B5879B /* ci_pre_xcodebuild.sh */,
+				3BBCDBB12ADD7C67007EAB65 /* ci_post_clone.sh */,
 			);
 			path = ci_scripts;
 			sourceTree = "<group>";
