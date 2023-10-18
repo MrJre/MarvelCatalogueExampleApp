@@ -9,7 +9,9 @@
 import Foundation
 
 private enum AuthenticationKeys: String {
+    // swiftlint:disable:next identifier_name
     case marvel_public_key
+    // swiftlint:disable:next identifier_name
     case marvel_private_key
 }
 
